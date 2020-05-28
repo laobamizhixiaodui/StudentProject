@@ -36,14 +36,14 @@
     <!-- 开启注解事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <!-- Mybatis的工厂 -->
+    <!--&lt;!&ndash; Mybatis的工厂 &ndash;&gt;
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!-- 核心配置文件的位置 -->
+        &lt;!&ndash; 核心配置文件的位置 &ndash;&gt;
         <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
-        <!--配置mapper映射文件的路径-->
+        &lt;!&ndash;配置mapper映射文件的路径&ndash;&gt;
         <property name="mapperLocations" value="classpath:com/project/mapper/*Mapper.xml"/>
-    </bean>
+    </bean>-->
 
     <!-- 配置Mapper接口扫描 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
