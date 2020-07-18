@@ -29,12 +29,12 @@
         <h2 style="text-align: center;margin-bottom: 10px">实验室设备管理系统</h2>
         <div class="layui-form-item input-item">
             <label for="username">用户名</label>
-            <input type="text" lay-verify="required" name="account" placeholder="请输入账号" autocomplete="off" id="username"
+            <input type="text" lay-verify="required" name="account" placeholder="请输入账号" autocomplete="off" id="username" value=" "
                    class="layui-input">
         </div>
         <div class="layui-form-item input-item">
             <label for="password">密码</label>
-            <input type="password" lay-verify="required|password" name="password" placeholder="请输入密码" autocomplete="off"
+            <input type="password" lay-verify="required|password" name="password" value=" " placeholder="请输入密码" autocomplete="off"
                    id="password" class="layui-input">
         </div>
         <div class="layui-form-item input-item captcha-box">
@@ -47,7 +47,9 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <button class="layui-btn layui-block" lay-filter="login" lay-submit="">登录</button>
+            <button class="layui-btn layui-block" lay-filter="login" lay-submit="" style="">登录</button>
+            <div style="height: 5px"></div>
+            <a href="register.jsp" class="layui-btn layui-block" style="background-color: #0e90d2;float: right">注册</a>
         </div>
     </form>
 </div>

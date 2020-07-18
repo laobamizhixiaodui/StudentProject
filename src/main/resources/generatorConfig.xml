@@ -100,7 +100,7 @@
 
 
 		<!--要生成代码的对应表的名称-->
-		<table tableName=""></table>
+		<table tableName="student"></table>
 
 
 	</context>
