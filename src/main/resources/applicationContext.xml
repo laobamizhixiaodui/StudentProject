@@ -22,7 +22,7 @@
     <import resource="classpath:application-mvc.xml"/>
 
     <!--导入shiro-->
-    <!--<import resource="application-shiro.xml"/>-->
+    <import resource="application-shiro.xml"/>
 
     <!--&lt;!&ndash; aop配置 日志配置 &ndash;&gt;
     <bean id="SystemAspect" class="com.itlike.aspect.SystemAspect"></bean>

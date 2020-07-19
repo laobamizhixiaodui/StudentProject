@@ -7,4 +7,6 @@ public interface StudentMapper {
     int insert(Student record);
 
     List<Student> selectAll();
+
+    Student selectById(String id);
 }

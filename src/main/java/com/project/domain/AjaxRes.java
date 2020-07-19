@@ -28,4 +28,13 @@ public class AjaxRes {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    @Override
+    public String toString() {
+        return "AjaxRes{" +
+                "success=" + success +
+                ", msg='" + msg + '\'' +
+                ", employee=" + employee +
+                '}';
+    }
 }

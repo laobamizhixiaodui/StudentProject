@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@ include file="static/common/common.jsp"%>
     <title>Steppy Account Create Form Flat Responsive Widget Template :: w3layouts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +17,7 @@
     <!-- Custom Theme files -->
     <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- //Custom Theme files -->
-    <%@ include file="static/common/common.jsp"%>
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/register.js"></script>
 </head>
 <body>
@@ -24,17 +25,14 @@
 <div class="main-agileits">
     <h1>Steppy Account Create Form</h1>
     <div class="main-row">
-        <ul class="steps">
-            <li class="is-active">Step 1</li>
-        </ul>
-        <form class="form-wrapper" id="registerForm" action="/register" method="post">
+        <form class="form-wrapper" id="registerForm" action="#" method="post">
             <fieldset class="section is-active">
                 <h3>Your Details</h3>
-                <input type="text" name="sid"  placeholder="学号" data-options="required:true,validType:['number']">
-                <input type="text" name="sname"  placeholder="姓名" data-options="required:true,validType:['userName','minLength[2]','maxLength[6]']">
-                <input type="text" name="phone"  placeholder="手机" data-options="required:true,validType:'phoneRex'">
-                <input type="text" name="idcard"  placeholder="身份证" data-options="required:true,validType:'idCode'">
-                <input type="password" name="password"  placeholder="Password" data-options="required:true,validType:['minLength[6]','maxLength[8]']">
+                <input type="text" name="sid"  placeholder="学号" class="easyui-validatebox" data-options="required:true,validType:['number']">
+                <input type="text" name="sname"  placeholder="姓名" class="easyui-validatebox" data-options="required:true,validType:['userName','minLength[2]','maxLength[6]']">
+                <input type="text" name="phone"  placeholder="手机" class="easyui-validatebox" data-options="required:true,validType:'phoneRex'">
+                <input type="text" name="idcard"  placeholder="身份证" class="easyui-validatebox" data-options="required:true,validType:'idCode'">
+                <input type="password" name="password"  placeholder="Password" class="easyui-validatebox" data-options="required:true,validType:['minLength[6]','maxLength[8]']">
 
                 <input class="submit button" type="submit" id="register" value="提交">
 
@@ -50,8 +48,9 @@
 </div>
 <!-- //copyright -->
 <!-- js -->
-<script src="static/js/jquery-2.2.3.min.js"></script>
+<%--<script src="static/js/jquery-2.2.3.min.js"></script>--%>
 <script>
+
 
 
     $(document).ready(function(){
@@ -75,8 +74,8 @@
     });
 
 
-
-    //自定义验证
+$(function () {
+//自定义验证
     $.extend($.fn.validatebox.defaults.rules, {
         phoneRex: {
             validator: function(value){
@@ -148,6 +147,8 @@
 
 
     });
+})
+
 </script>
 <!-- //js -->
 </body>

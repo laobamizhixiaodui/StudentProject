@@ -20,15 +20,24 @@ public class RegisterController {
 
 
     @RequestMapping("/register")
-
-    public void register(Student student, HttpServletRequest request, HttpServletResponse response){
+    @ResponseBody
+    public AjaxRes register(Student student, HttpServletRequest request, HttpServletResponse response){
         System.out.println(student);
         AjaxRes ajaxRes=new AjaxRes();
+        boolean reg=false;
         try{
-            registerService.InsertStu(student);
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+            reg=registerService.InsertStu(student);
+            if(reg){
+                ajaxRes.setSuccess(true);
+            }else{
+                ajaxRes.setSuccess(false);
+            }
+
         }catch (Exception e){
             e.printStackTrace();
+            ajaxRes.setSuccess(false);
         }
+        System.out.println(ajaxRes);
+        return ajaxRes;
     }
 }

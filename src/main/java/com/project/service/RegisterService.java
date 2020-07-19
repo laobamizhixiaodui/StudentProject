@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 
 public interface RegisterService {
 
-    public void InsertStu(Student student);
+    public boolean InsertStu(Student student);
 
 }

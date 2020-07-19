@@ -73,7 +73,7 @@
                 </a>
                 <dl id="userInfo" class="layui-nav-child">
                     <dd><a href="javascript:void(0)">个人中心</a></dd>
-                    <dd><a href="javascript:void(0)" id="logout">退出登录</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/logout" id="logout">退出登录</a></dd>
                 </dl>
             </li>
         </ul>

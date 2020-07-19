@@ -14,6 +14,7 @@
     <meta name="keywords" content="ok-admin v2.0,ok-admin网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
     <meta name="description" content="ok-admin v2.0，顾名思义，很赞的后台模版，它是一款基于Layui框架的轻量级扁平化且完全免费开源的网站后台管理系统模板，适合中小型CMS后台系统。">
 
+    <%@include file="static/common/common.jsp"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/oksub.css"/>
     <style type="text/css">
 
@@ -29,7 +30,7 @@
         <h2 style="text-align: center;margin-bottom: 10px">实验室设备管理系统</h2>
         <div class="layui-form-item input-item">
             <label for="username">用户名</label>
-            <input type="text" lay-verify="required" name="account" placeholder="请输入账号" autocomplete="off" id="username" value=" "
+            <input type="text" lay-verify="required" name="username" placeholder="请输入账号" autocomplete="off" id="username" value=" "
                    class="layui-input">
         </div>
         <div class="layui-form-item input-item">
@@ -37,7 +38,7 @@
             <input type="password" lay-verify="required|password" name="password" value=" " placeholder="请输入密码" autocomplete="off"
                    id="password" class="layui-input">
         </div>
-        <div class="layui-form-item input-item captcha-box">
+        <%--<div class="layui-form-item input-item captcha-box">
             <label for="captcha">验证码</label>
             <input type="text" lay-verify="required|captcha" name="captcha" placeholder="请输入验证码" autocomplete="off"
                    id="captcha" maxlength="4" class="layui-input">
@@ -45,9 +46,9 @@
                 <img src="${pageContext.request.contextPath}/checkCode" onclick="this.src=this.src+'?d='+Math.random();"
                      title="点击刷新">
             </div>
-        </div>
+        </div>--%>
         <div class="layui-form-item">
-            <button class="layui-btn layui-block" lay-filter="login" lay-submit="" style="">登录</button>
+            <button class="layui-btn layui-block" lay-filter="login" id="loginBtn" lay-submit="" style="">登录</button>
             <div style="height: 5px"></div>
             <a href="register.jsp" class="layui-btn layui-block" style="background-color: #0e90d2;float: right">注册</a>
         </div>
@@ -56,6 +57,30 @@
 <!--js逻辑-->
 <script src="${pageContext.request.contextPath}/static/lib/layui/layui.js"></script>
 <script>
+
+    $(function () {
+        $("#loginBtn").click(function () {
+            //发送请求做登录验证
+            /*Ajax发送请求，是没有办法跳转服务器当中的请求
+                * 只能通过浏览器当中来跳转
+                * */
+            /*发送请求 做登录认证*/
+            /*表单序列化*/
+            $.post("/login",$("form").serialize(),function(data){
+                console.log(data);
+                /*把data json格式的字符串 转成数据*/
+                data=$.parseJSON(data);
+                if(data.success){
+                    //跳转到首页
+                    window.location.href="index.jsp";
+
+                }else{
+                    alert(data.msg);
+                }
+            })
+        })
+    });
+
     layui.use(["form", "okGVerify", "okUtils", "okLayer"], function () {
         var form = layui.form;
         var $ = layui.jquery;
@@ -75,14 +100,14 @@
         /**
          * 表单提交
          */
-        form.on("submit(login)", function (data) {
-            okUtils.ajax("", "post", data.field, true).done(function (response) {
+        /*form.on("submit(login)", function (data) {
+            okUtils.ajax("/login", "post", data.field, true).done(function (response) {
                 okLayer.greenTickMsg(response.content, function () {
                     window.location = "/index.jsp"
                 })
             });
             return false;
-        });
+        });*/
 
         /**
          * 表单input组件单击时
@@ -111,6 +136,8 @@
             }
         })
     });
+
+
 </script>
 </body>
 </html>
