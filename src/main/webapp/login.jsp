@@ -22,7 +22,7 @@
 </head>
 <body class="page-fill">
 <div class="page-fill" id="login">
-    <form class="layui-form">
+    <form class="layui-form" onsubmit="return false" action="##" method="post">
         <div class="login_face">
             <img src="${pageContext.request.contextPath}/static/images/logo1.jpg">
 
@@ -48,7 +48,7 @@
             </div>
         </div>--%>
         <div class="layui-form-item">
-            <button class="layui-btn layui-block" lay-filter="login" id="loginBtn" lay-submit="" style="">登录</button>
+            <button class="layui-btn layui-block" lay-filter="login" id="loginBtn"  >登录</button>
             <div style="height: 5px"></div>
             <a href="register.jsp" class="layui-btn layui-block" style="background-color: #0e90d2;float: right">注册</a>
         </div>
@@ -69,7 +69,7 @@
             $.post("/login",$("form").serialize(),function(data){
                 console.log(data);
                 /*把data json格式的字符串 转成数据*/
-                data=$.parseJSON(data);
+                /*data=$.parseJSON(data);*/
                 if(data.success){
                     //跳转到首页
                     window.location.href="index.jsp";
@@ -100,14 +100,15 @@
         /**
          * 表单提交
          */
-        /*form.on("submit(login)", function (data) {
+        form.on("submit(login)", function (data) {
+            console.log(data)
             okUtils.ajax("/login", "post", data.field, true).done(function (response) {
                 okLayer.greenTickMsg(response.content, function () {
                     window.location = "/index.jsp"
                 })
             });
             return false;
-        });*/
+        });
 
         /**
          * 表单input组件单击时

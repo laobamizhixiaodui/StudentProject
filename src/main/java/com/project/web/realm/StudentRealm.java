@@ -69,7 +69,6 @@ public class StudentRealm extends AuthorizingRealm {
 
         SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(student,
                 student.getPassword(),
-                ByteSource.Util.bytes(student.getSname()),
                 this.getName());
         return info;
     }
